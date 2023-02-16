@@ -26,6 +26,7 @@ class Field extends React.Component {
     return <input placeholder={holder} type="text" style={fieldStyle} />;
   }
 }
+
 function Btn() {
   // const text = "Log in";
   // return <button>{text}</button>;
