@@ -2,7 +2,7 @@ import EmployeesListItem from "../employees-list-item/employees-list-item";
 
 import "./employees-list.css";
 
-const EmployeesList = ({ data }) => {
+const EmployeesList = ({ data, onDelete }) => {
   // используем spread
   const elements = data.map((item) => {
     // return <EmployeesListItem {...item} />;
@@ -10,7 +10,14 @@ const EmployeesList = ({ data }) => {
     // return <EmployeesListItem name={item.name} salary={item.salary}/>;
 
     const { id, ...itemProps } = item;
-    return <EmployeesListItem key={id} {...itemProps} />;
+    return (
+      <EmployeesListItem
+        key={id}
+        {...itemProps}
+        // onDelete={() => console.log("Deleted")}
+        onDelete={() => onDelete(id)}
+      />
+    );
   });
   return <ul className="app-list list-group">{elements}</ul>;
 };
