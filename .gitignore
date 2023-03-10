@@ -4,6 +4,10 @@
 
 # dependencies
 /node_modules
+/homeworks1/node_modules
+/homeworks2/project/node_modules
+/homeworks3/project/node_modules
+/homeworks4/project/node_modules
 /.pnp
 .pnp.js
 
