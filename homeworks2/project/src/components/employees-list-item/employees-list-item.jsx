@@ -1,71 +1,132 @@
-import { Component } from "react";
+// import { Component } from "react";
 
 import "./employees-list-item.css";
+// !!!!!!Возврат к функциональному компоненту!!!!!!!
+// class EmployeesListItem extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       increase: false,
+//       rise: false,
+//     };
+//   }
+// //заменили на onToggleIncrease, onToggleRise
+//   // onIncrease = () => {
+//   //   this.setState(({ increase }) => ({
+//   //     increase: !increase,
+//   //   }));
+//   // };
 
-class EmployeesListItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      increase: false,
-      rise: false,
-    };
+//   // onRise = () => {
+//   //   this.setState(({ rise }) => ({
+//   //     rise: !rise,
+//   //   }));
+//   // };
+
+//   render() {
+//     const { name, salary, onDelete, onToggleIncrease, onToggleRise } =
+//       this.props;
+//     const { increase, rise } = this.state; //increase приходит из state
+
+//     let classNames = "list-group-item d-flex justify-content-between";
+//     if (increase) {
+//       classNames += " increase";
+//     }
+//     if (rise) {
+//       classNames += " like";
+//     }
+//     return (
+//       <li className={classNames}>
+//         {/* <span className="list-group-item-label" onClick={this.onRise}> */}
+//         <span className="list-group-item-label" onClick={onToggleRise}>
+//           {name}
+//         </span>
+//         <input
+//           type="text"
+//           className="list-group-item-input"
+//           defaultValue={salary + "$"}
+//         />
+//         <div className="d-flex justify-content-center align-items-center">
+//           <button
+//             type="button"
+//             className="btn-cookie btn-sm "
+//             onClick={onToggleIncrease}
+//           >
+//             <i className="fas fa-cookie"></i>
+//           </button>
+
+//           <button
+//             type="button"
+//             className="btn-trash btn-sm "
+//             onClick={onDelete}
+//           >
+//             <i className="fas fa-trash"></i>
+//           </button>
+//           <i className="fas fa-star"></i>
+//         </div>
+//       </li>
+//     );
+//   }
+// }
+
+// !!!!!!Возврат к функциональному компоненту!!!!!!!
+//Функциональный компонент
+const EmployeesListItem = (props) => {
+  const {
+    name,
+    salary,
+    onDelete,
+    // onToggleIncrease,
+    // onToggleRise,
+    onToggleProp,
+    increase,
+    rise,
+  } = props;
+
+  let classNames = "list-group-item d-flex justify-content-between";
+  if (increase) {
+    classNames += " increase";
   }
-
-  onIncrease = () => {
-    this.setState(({ increase }) => ({
-      increase: !increase,
-    }));
-  };
-
-  onRise = () => {
-    this.setState(({ rise }) => ({
-      rise: !rise,
-    }));
-  };
-
-  render() {
-    const { name, salary, onDelete } = this.props;
-    const { increase, rise } = this.state; //increase приходит из state
-
-    let classNames = "list-group-item d-flex justify-content-between";
-    if (increase) {
-      classNames += " increase";
-    }
-    if (rise) {
-      classNames += " like";
-    }
-    return (
-      <li className={classNames}>
-        <span className="list-group-item-label" onClick={this.onRise}>
-          {name}
-        </span>
-        <input
-          type="text"
-          className="list-group-item-input"
-          defaultValue={salary + "$"}
-        />
-        <div className="d-flex justify-content-center align-items-center">
-          <button
-            type="button"
-            className="btn-cookie btn-sm "
-            onClick={this.onIncrease}
-          >
-            <i className="fas fa-cookie"></i>
-          </button>
-
-          <button
-            type="button"
-            className="btn-trash btn-sm "
-            onClick={onDelete}
-          >
-            <i className="fas fa-trash"></i>
-          </button>
-          <i className="fas fa-star"></i>
-        </div>
-      </li>
-    );
+  if (rise) {
+    classNames += " like";
   }
-}
+  return (
+    // <li className="list-group-item d-flex justify-content-between">
+    <li className={classNames}>
+      <span
+        className="list-group-item-label"
+        // onClick={onToggleRise}
+        onClick={onToggleProp}
+        data-toggle="rise"
+      >
+        {name}
+      </span>
+      <input
+        type="text"
+        className="list-group-item-input"
+        defaultValue={salary + "$"}
+      />
+      <div className="d-flex justify-content-center align-items-center">
+        <button
+          type="button"
+          className="btn-cookie btn-sm "
+          // onClick={onToggleIncrease}
+          onClick={onToggleProp}
+          data-toggle="increase"
+        >
+          <i className="fas fa-cookie"></i>
+        </button>
+
+        <button type="button" className="btn-trash btn-sm " onClick={onDelete}>
+          <i className="fas fa-trash"></i>
+        </button>
+        <i className="fas fa-star"></i>
+      </div>
+    </li>
+  );
+};
+
+// !!!!!!Возврат к функциональному компоненту!!!!!!!
 
 export default EmployeesListItem;
 // //Классовый компонент
